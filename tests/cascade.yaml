@@ -1,0 +1,34 @@
+---
+formatters:
+    dashed:
+        class: Monolog\Formatter\LineFormatter
+        format: "%datetime%-%channel%.%level_name% - %message%\n"
+
+
+handlers:
+  console:
+    class: Monolog\Handler\StreamHandler
+    level: DEBUG
+    formatter: dashed
+    stream: php://stdout
+    
+  syslog:
+    class: Monolog\Handler\SyslogHandler
+    level: DEBUG
+    ident: my_ident
+    facility: user
+
+processors:
+  pid_processor:
+    class: Monolog\Processor\ProcessIdProcessor
+  memory_processor:
+    class: Monolog\Processor\MemoryUsageProcessor
+  psr_log_message_processor:
+    class: Monolog\Processor\PsrLogMessageProcessor
+
+loggers:
+  app:
+    handlers: [console]
+    processors: [psr_log_message_processor, pid_processor]
+  caching: 
+    handlers: [syslog]

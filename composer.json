@@ -1,0 +1,22 @@
+{
+  "name": "linkorb/flex-log",
+  "description": "Simple wrapper around monolog-cascade adding practical utilities",
+  "keywords": ["psr3", "flex", "monolog", "monolog-cascade"],
+  "license": "MIT",
+  "require": {
+    "theorchard/monolog-cascade": "^0.5.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8"
+  },
+  "autoload":{
+    "psr-4":{
+      "FlexLog\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "FlexLogTest\\": "tests"
+    }
+  }
+}
